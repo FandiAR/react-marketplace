@@ -1,0 +1,40 @@
+.login {
+  &__container {
+    border: solid 2px $grey;
+    border-radius: 5px;
+    width: 30vw;
+    height: 50vh;
+    .login-header {
+      font-size: 20px;
+      font-weight: bold;
+      padding-top: 20px;
+    }
+    .login-button {
+      height: 30px;
+      font-size: 12px;
+      width: 90px;
+      border-radius: 5px;
+      background: grey;
+      color: white;
+    }
+    .my-facebook-button-class {
+      height: 30px;
+      font-size: 12px;
+      background: #385898;
+      color: white;
+      border-radius: 5px;
+      width: 70%;
+      .fa-facebook {
+        padding-right: 10px;
+      }
+    }
+    .google-button {
+      height: 30px;
+      font-size: 12px;
+      background: #385898;
+      color: white;
+      border-radius: 5px;
+      width: 70%;
+    }
+  }
+}

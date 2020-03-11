@@ -1,0 +1,9 @@
+$grey: #f7f7f7;
+
+// application
+@import './Styles.scss';
+@import '../views/login/Login.scss';
+@import '../views/home/Home.scss';
+
+// components
+@import '../components/navigation/Navigation.scss';

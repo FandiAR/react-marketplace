@@ -1,0 +1,20 @@
+.navigation {
+    display: flex;
+    position: fixed;
+    height: 30px;
+    width: 40vw;
+    bottom: 10vh;
+    justify-content: space-between;
+    margin: 0 auto;
+    border: solid 3px $grey;
+    padding-right: 10px;
+    padding-left: 10px;
+    &__menu {
+        text-decoration: none;
+        color: black;
+    }
+    a:hover {
+        text-decoration: none;
+        color: black;
+    }
+}
