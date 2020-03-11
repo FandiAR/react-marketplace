@@ -2,8 +2,8 @@ $grey: #f7f7f7;
 
 // application
 @import './Styles.scss';
-@import '../views/login/Login.scss';
-@import '../views/home/Home.scss';
+@import './Login.scss';
+@import './Home.scss';
 
 // components
 @import '../components/navigation/Navigation.scss';

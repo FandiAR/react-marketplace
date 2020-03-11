@@ -1,8 +1,9 @@
 import React from 'react';
+import Skeleton from 'react-loading-skeleton';
 import { IoMdHeart, IoIosHeartEmpty } from 'react-icons/io';
 
 const Products = (props) => {
-    const { data } = props;
+    const { data, handleClickProduct, loading } = props;
     let products = [];
     if (data) {
         if (data.productPromo) {
@@ -10,7 +11,10 @@ const Products = (props) => {
                 data.productPromo.map((data, index) => {
                     products.push(
                         <div className="margin-top-4" key={index}>
-                            <div className="container position-relative">
+                            <div
+                                className="container position-relative"
+                                onClick={e => handleClickProduct(e)}
+                            >
                                 <div className="product-list">
                                     <img src={data.imageUrl} alt="category" />
                                 </div>
@@ -29,7 +33,22 @@ const Products = (props) => {
         }
     }
     return (
-        <div className="products">{products}</div>
+        <div className="products">
+            {
+                loading
+                    ? (
+                        <React.Fragment>
+                            <div className="margin-top-4">
+                                <Skeleton height={150} />
+                            </div>
+                            <div className="margin-top-4">
+                                <Skeleton height={150} />
+                            </div>
+                        </React.Fragment>
+                    )
+                    : products
+            }
+        </div>
     )
 }
 export default Products;

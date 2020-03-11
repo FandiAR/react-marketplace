@@ -41,8 +41,8 @@ export default function reducer(state = initialState, action = {}) {
             })
             return {
                 ...object,
-                loaded: false,
-                loading: true,
+                loaded: true,
+                loading: false,
             }
 
         case FAIL:

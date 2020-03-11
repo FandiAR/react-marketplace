@@ -17,12 +17,16 @@ const HomePage = (props) => {
     
     const { dataHome } = props;
     // const [dataCategories] = useState(dataHome);
-    const { data } = dataHome;
+    const { data, loading } = dataHome;
 
     const handleFocus = (e) => {
         e.preventDefault();
         history.push('/search');
-    }
+    };
+    const handleClickProduct = (e) => {
+        e.preventDefault();
+        history.push('/detail');
+    };
     
     return (
         <PageTitle title="Home">
@@ -43,8 +47,12 @@ const HomePage = (props) => {
                             />
                         </span>
                     </div>
-                    <Categories data={data} />
-                    <Products data={data} />
+                    <Categories data={data} loading={loading} />
+                    <Products
+                        data={data}
+                        handleClickProduct={handleClickProduct}
+                        loading={loading}
+                    />
                 </div>
             </div>
         </PageTitle>

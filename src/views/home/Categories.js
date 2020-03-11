@@ -1,7 +1,8 @@
 import React from 'react';
+import Skeleton from 'react-loading-skeleton';
 
 const Categories = (props) => {
-    const { data } = props;
+    const { data, loading } = props;
     let categories = [];
     if (data) {
         if (data.category) {
@@ -24,7 +25,19 @@ const Categories = (props) => {
     }
 
     return (
-        <React.Fragment>{categories}</React.Fragment>
+        <React.Fragment>
+            {
+                loading
+                    ? (
+                        <React.Fragment>
+                            <div className="margin-top-2">
+                                <Skeleton height={70} />
+                            </div>
+                        </React.Fragment>
+                    )
+                    : categories
+            }
+        </React.Fragment>
     )
 }
 export default Categories;

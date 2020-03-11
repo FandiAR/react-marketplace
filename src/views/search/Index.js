@@ -12,12 +12,18 @@ const SearchPage = (props) => {
     const inputEl = useRef('');
     let [searchName, setResults] = useState('');
     let products = [];
+
     useEffect(() => {
         getDataHome();
     }, [getDataHome]);
+
     const backToHome = (e) => {
         e.preventDefault();
         history.push('/home');
+    };
+    const handleClickProduct = (e) => {
+        e.preventDefault();
+        history.push('/detail');
     };
 
     let searchResults = [];
@@ -47,7 +53,7 @@ const SearchPage = (props) => {
             searchResults.map((dataResult, indexResult) => {
                 content.push(
                     <div key={indexResult} className="content-search">
-                        <div className="row">
+                        <div className="row product" onClick={e => handleClickProduct(e)}>
                             <div className="col-sm-4 text-left">
                                 <img src={dataResult.imageUrl} alt="products" />
                             </div>
@@ -89,7 +95,7 @@ const SearchPage = (props) => {
                             />
                         </span>
                     </div>
-                    <div className="margin-top-4 home__search-container">
+                    <div className="margin-top-2 home__search-container">
                         {content}
                     </div>
                 </div>
