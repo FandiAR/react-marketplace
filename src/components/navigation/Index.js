@@ -4,9 +4,9 @@ import { NavLink } from 'react-router-dom';
 const Navigation = () => {
     const menuOptions = [
         { name: "Home", link: "/home" },
-        { name: "Feed", link: "/" },
-        { name: "Cart", link: "/" },
-        { name: "Profile", link: "/" },
+        { name: "Feed", link: "/home" },
+        { name: "Cart", link: "/home" },
+        { name: "Profile", link: "/profile" },
     ];
     return (
         <div className="navigation">

@@ -2,6 +2,7 @@ import Login from '../views/login/Index';
 import Home from '../views/home/Index';
 import Search from '../views/search/Index';
 import Detail from '../views/detail/Index';
+import Profile from '../views/profile/Index';
 
 export const MainRoutes = [
   {
@@ -18,7 +19,11 @@ export const MainRoutes = [
     component: Search,
   },
   {
-    path: '/detail',
+    path: '/detail/:id',
     component: Detail,
+  },
+  {
+    path: '/profile',
+    component: Profile,
   },
 ];

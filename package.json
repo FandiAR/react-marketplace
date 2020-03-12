@@ -1,7 +1,12 @@
 {
-  "name": "sehatq-fandi",
+  "name": "react-marketplace-fandi",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Fandi A Riyanto",
+    "email": "fandiagusriyanto@gmail.com",
+    "url": "https://www.linkedin.com/in/fandi-agus-riyanto-93b7787b"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",

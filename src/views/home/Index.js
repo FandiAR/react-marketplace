@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PageTitle from '../../components/title/Index';
@@ -10,22 +10,20 @@ import Products from './Products';
 
 const HomePage = (props) => {
     const { getDataHome, history } = props;
-    const inputEl = useRef('');
     useEffect(() => {
         getDataHome();
     }, [getDataHome]);
     
     const { dataHome } = props;
-    // const [dataCategories] = useState(dataHome);
     const { data, loading } = dataHome;
 
     const handleFocus = (e) => {
         e.preventDefault();
         history.push('/search');
     };
-    const handleClickProduct = (e) => {
+    const handleClickProduct = (e, id) => {
         e.preventDefault();
-        history.push('/detail');
+        history.push(`/detail/${id}`);
     };
     
     return (
@@ -38,7 +36,6 @@ const HomePage = (props) => {
                         <span className="position-relative search text-right">
                             <IoIosSearch className="search-icon" />
                             <input
-                                ref={inputEl} 
                                 className="input-search"
                                 autoComplete="off"
                                 type="text"

@@ -9,38 +9,35 @@ import { MdKeyboardBackspace } from 'react-icons/md'
 const SearchPage = (props) => {
     const { getDataHome, history, dataHome } = props;
     const { data } = dataHome;
-    const inputEl = useRef('');
+    const inputEl = useRef(null);
     let [searchName, setResults] = useState('');
     let products = [];
 
     useEffect(() => {
         getDataHome();
+        inputEl.current.focus();
     }, [getDataHome]);
 
     const backToHome = (e) => {
         e.preventDefault();
-        history.push('/home');
+        history.goBack();
     };
-    const handleClickProduct = (e) => {
+    const handleClickProduct = (e, id) => {
         e.preventDefault();
-        history.push('/detail');
+        history.push(`/detail/${id}`);
     };
 
     let searchResults = [];
     if (searchName) {
-        if (data) {
-            if (data.productPromo) {
-                if (data.productPromo.length > 0) {
-                    products = data.productPromo;
-                    const dataSearch = data.productPromo.filter(x => x.title
-                        .toLowerCase()
-                        .includes(searchName.toLowerCase()));
-                    if (dataSearch.length === 0) {
-                        searchResults = [];
-                    } else {
-                        searchResults = dataSearch;
-                    }
-                }
+        if (data.productPromo.length > 0) {
+            products = data.productPromo;
+            const dataSearch = data.productPromo.filter(x => x.title
+                .toLowerCase()
+                .includes(searchName.toLowerCase()));
+            if (dataSearch.length === 0) {
+                searchResults = [];
+            } else {
+                searchResults = dataSearch;
             }
         }
     } else {
@@ -49,28 +46,26 @@ const SearchPage = (props) => {
 
     let content = [];
     if (searchName !== '') {
-        if (searchResults.length > 0) {
-            searchResults.map((dataResult, indexResult) => {
-                content.push(
-                    <div key={indexResult} className="content-search">
-                        <div className="row product" onClick={e => handleClickProduct(e)}>
-                            <div className="col-sm-4 text-left">
-                                <img src={dataResult.imageUrl} alt="products" />
-                            </div>
-                            <span className="col-sm-8 padding-left-4 text-left">
-                                <div>{dataResult.title}</div>
-                                <div className="padding-top-2">
-                                    {dataResult.price}
-                                </div>
-                            </span>
+        searchResults.map((dataResult, indexResult) => {
+            content.push(
+                <div key={indexResult} className="content-search">
+                    <div className="row product" onClick={e => handleClickProduct(e, dataResult.id)}>
+                        <div className="col-sm-4 text-left">
+                            <img src={dataResult.imageUrl} alt="products" />
                         </div>
-                    </div>,
-                );
-                return dataResult;
-            })
-        }
+                        <span className="col-sm-8 padding-left-4 text-left">
+                            <div>{dataResult.title}</div>
+                            <div className="padding-top-2">
+                                {dataResult.price}
+                            </div>
+                        </span>
+                    </div>
+                </div>,
+            );
+            return dataResult;
+        })
     }
-    
+
 
     return (
         <PageTitle title="Search">
@@ -89,7 +84,6 @@ const SearchPage = (props) => {
                                 autoComplete="off"
                                 placeholder="Search by product name e.g Nitendo"
                                 type="text"
-                                name="search"
                                 onChange={e => setResults(e.target.value)}
                                 value={searchName}
                             />

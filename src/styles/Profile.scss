@@ -1,0 +1,30 @@
+.sold {
+  width: 100% !important;
+  height: 100% !important;
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  &__search-sold {
+    height: 85%;
+    overflow-y: auto;
+    .content-sold {
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+      display: flex;
+      .sold-product {
+        cursor: pointer;
+        img {
+          width: 90%;
+        }
+      }
+    }
+    .content-sold:hover {
+      background: darken( white, 1% );
+      cursor: pointer;
+    }
+  }
+}
