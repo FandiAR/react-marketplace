@@ -1,15 +1,16 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import Skeleton from "react-loading-skeleton";
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import Skeleton from 'react-loading-skeleton';
 import {
   getDataHome,
   handleLoved,
   addBuy
-} from "../../redux-modules/modules/Home";
-import PageTitle from "../../components/title/Index";
-import { MdKeyboardBackspace, MdShare } from "react-icons/md";
-import { IoMdHeart, IoIosHeartEmpty } from "react-icons/io";
+} from '../../redux-modules/modules/Home';
+import PageTitle from '../../components/title/Index';
+import { MdKeyboardBackspace, MdShare } from 'react-icons/md';
+import { IoMdHeart, IoIosHeartEmpty } from 'react-icons/io';
+import { TwitterShareButton } from "react-share";
 
 const DetailPage = props => {
   const { getDataHome, history, match, handleLoved, addBuy } = props;
@@ -19,6 +20,7 @@ const DetailPage = props => {
   }, [getDataHome]);
   const { dataHome } = props;
   const { data } = dataHome;
+  const currentLocation = window.location.href;
   let dataDetail = [];
   let objectDataDetail = null;
   if (data.productPromo.length > 0) {
@@ -59,6 +61,7 @@ const DetailPage = props => {
       );
     }
   }
+  
   return (
     <PageTitle title="Detail">
       <div className="wrapper">
@@ -68,55 +71,52 @@ const DetailPage = props => {
               <Skeleton height={150} />
             </div>
           ) : (
-            <div className="position-relative container-product">
-              <div className="product-list">
-                <img src={objectDataDetail.imageUrl} alt="product" />
+              <div className="position-relative container-product">
+                <div className="product-list">
+                  <img src={objectDataDetail.imageUrl} alt="product" />
+                </div>
+                <MdKeyboardBackspace
+                  className="back text-left"
+                  onClick={e => {
+                    backToPrev(e);
+                  }}
+                />
+                <TwitterShareButton url={currentLocation}>
+                  <MdShare className="share text-left" />
+                </TwitterShareButton>
               </div>
-              <MdKeyboardBackspace
-                className="back text-left"
-                onClick={e => {
-                  backToPrev(e);
-                }}
-              />
-              <MdShare
-                className="share text-left"
-                onClick={e => {
-                  backToPrev(e);
-                }}
-              />
-            </div>
-          )}
+            )}
           {!objectDataDetail ? (
             <Skeleton width="100%" />
           ) : (
-            <div className="row">
-              <div className="col-sm-10 col-xs-10 col-md-10 text-left font-12">
-                {objectDataDetail.title}
+              <div className="row">
+                <div className="col-sm-10 col-xs-10 col-md-10 text-left font-12">
+                  {objectDataDetail.title}
+                </div>
+                {isLovedContent}
               </div>
-              {isLovedContent}
-            </div>
-          )}
+            )}
           {!objectDataDetail ? (
             <Skeleton height="45vh" />
           ) : (
-            <div className="margin-top-4 text-justify description">
-              {objectDataDetail.description}
-            </div>
-          )}
+              <div className="margin-top-4 text-justify description">
+                {objectDataDetail.description}
+              </div>
+            )}
           {!objectDataDetail ? (
             ""
           ) : (
-            <div className="d-flex text-right float-right">
-              <div className="margin-top-4">{objectDataDetail.price}</div>
-              <button
-                className="margin-left-4 margin-top-2 button-buy"
-                type="submit"
-                onClick={() => addBuy(objectDataDetail.id)}
-              >
-                Buy
+              <div className="d-flex text-right float-right">
+                <div className="margin-top-4">{objectDataDetail.price}</div>
+                <button
+                  className="margin-left-4 margin-top-2 button-buy"
+                  type="submit"
+                  onClick={() => addBuy(objectDataDetail.id)}
+                >
+                  Buy
               </button>
-            </div>
-          )}
+              </div>
+            )}
         </div>
       </div>
     </PageTitle>

@@ -285,14 +285,13 @@ label {
 .d-flex {
   display: flex;
 }
-
-input {
+input[type=text], input[type=password] {
   width: 90%;
   border: solid 3px $grey;
   border-radius: 5px;
   height: 30px;
 }
-input:focus {
+input[type=text]:focus, input[type=password]:focus {
   outline: none !important;
   border: 3px solid $grey;
   border-radius: 5px;
