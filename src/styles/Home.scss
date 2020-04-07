@@ -18,6 +18,8 @@
       align-items: center;
       height: 150px;
       display: flex;
+      -webkit-box-shadow: 0 0 0 1px rgba(93, 112, 87, 0.2);
+      box-shadow: 0 0 0 1px rgba(93, 112, 87, 0.2);
       .product {
         cursor: pointer;
         img {
@@ -43,6 +45,8 @@
       border: solid 2px $grey;
       height: 150px;
       display: flex;
+      -webkit-box-shadow: 0 0 0 1px rgba(93, 112, 87, 0.2);
+      box-shadow: 0 0 0 1px rgba(93, 112, 87, 0.2);
       .loved {
         position: absolute;
         bottom: 8px;
@@ -76,6 +80,8 @@
       border-radius: 15px;
       padding-left: 30px;
       font-size: 12px;
+      -webkit-box-shadow: 0 0 0 5px rgba(93, 112, 87, 0.2);
+      box-shadow: 0 0 0 5px rgba(93, 112, 87, 0.2);
     }
   }
   .categories {
