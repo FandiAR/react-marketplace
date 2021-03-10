@@ -36,3 +36,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 6. react-helmet (dynamic window title)
 7. react-facebook-login (not yet implemented, no appId)
 8. react-google-login (not yet implemented, no clientId)
+
+[Live Demo](https://react-marketplace-sable.vercel.app/home)
